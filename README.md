@@ -4,9 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Helen's Greek Kitchen</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
 <style>
-  body {
+body {
     font-family: 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
@@ -14,20 +13,17 @@
     color: #2e9cab;
     line-height: 1.6;
     scroll-behavior: smooth;
-  }
-
-  header {
-    position: relative;
-  }
-
-  header img {
+}
+header { position: relative; }
+header img {
     width: 100%;
     height: auto;
     max-height: 400px;
     object-fit: cover;
-  }
-
-  .menu-toggle {
+    transition: transform 0.3s;
+}
+header img:hover { transform: scale(1.02); }
+.menu-toggle {
     display: none;
     font-size: 2em;
     cursor: pointer;
@@ -36,9 +32,10 @@
     top: 10px;
     right: 20px;
     z-index: 1500;
-  }
-
-  nav {
+    transition: color 0.3s;
+}
+.menu-toggle:hover { color: #ffd700; }
+nav {
     display: flex;
     justify-content: center;
     background-color: #2e9cab;
@@ -46,9 +43,9 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-  }
-
-  nav a {
+    transition: max-height 0.5s ease;
+}
+nav a {
     text-decoration: none;
     color: white;
     padding: 15px 20px;
@@ -56,46 +53,28 @@
     font-weight: bold;
     font-size: 1em;
     transition: background 0.3s, transform 0.2s;
-  }
-
-  nav a:hover {
+}
+nav a:hover {
     background-color: #2874a6;
     transform: scale(1.05);
-  }
-
-  section {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0 20px;
-  }
-
-  h2 {
-    color: #2e9cab;
-    margin-top: 30px;
-    border-bottom: 2px solid #2e9cab;
-    padding-bottom: 5px;
-  }
-
-  .menu-item {
+}
+section { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
+h2 { color: #2e9cab; margin-top: 30px; border-bottom: 2px solid #2e9cab; padding-bottom: 5px; }
+.menu-item {
     margin-bottom: 20px;
     padding: 15px;
     border-left: 5px solid #2e9cab;
     background-color: #e6f2ff;
     border-radius: 8px;
-  }
-
-  .menu-item h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.3em;
-    color: #2e9cab;
-  }
-
-  .menu-item p {
-    margin: 0;
-    color: #2e9cab;
-  }
-
-  .order-button {
+    transition: transform 0.2s, background 0.3s;
+}
+.menu-item:hover {
+    transform: scale(1.02);
+    background-color: #d0e8ff;
+}
+.menu-item h3 { margin: 0 0 5px 0; font-size: 1.3em; color: #2e9cab; }
+.menu-item p { margin: 0; color: #2e9cab; }
+.order-button {
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -109,60 +88,58 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
     margin:20px;
-  }
-
-  .order-button:hover {
+}
+.order-button:hover {
     background-color: #1f618d;
     transform: scale(1.08);
     box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-  }
-
-  footer {
+}
+footer {
     text-align: center;
     padding: 20px;
     background-color: #1f618d;
     color: white;
     margin-top: 30px;
-  }
-
-  /* Overlay */
-  .overlay {
+}
+/* Overlay */
+.overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-color: rgba(240, 248, 255, 0.98);
     overflow-y: auto;
     display: none;
     z-index: 2000;
     padding: 50px 20px;
-  }
-
-  .overlay h2 {
-    text-align: center;
-    color: #2e9cab;
-  }
-
-  .close-btn {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.overlay.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.overlay h2 { text-align: center; color: #2e9cab; }
+.close-btn {
     position: fixed;
     top: 20px;
     right: 30px;
     font-size: 2em;
     cursor: pointer;
     color: #2e9cab;
-  }
-
-  /* Category selector */
-  .category-grid {
+    transition: color 0.3s;
+}
+.close-btn:hover { color: #ff4500; }
+/* Category selector */
+.category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     max-width: 800px;
     margin: 50px auto;
-  }
-
-  .category-btn {
+}
+.category-btn {
     background: #2e9cab;
     color: white;
     padding: 20px;
@@ -171,24 +148,19 @@
     font-size: 1.3em;
     cursor: pointer;
     transition: 0.3s;
-  }
+}
+.category-btn:hover { background:#1f618d; transform: scale(1.05); }
 
-  .category-btn:hover {
-    background:#1f618d;
-    transform: scale(1.05);
-  }
-
-  @media (max-width: 800px) {
+@media (max-width: 800px) {
     .menu-toggle { display: block; }
     nav { display: none; flex-direction: column; width: 100%; }
     nav a { padding: 12px 20px; font-size: 1em; }
-  }
-
-  @media (max-width: 600px) {
+}
+@media (max-width: 600px) {
     header img { max-height: 250px; }
     .order-button { font-size:1.2em; padding:15px 25px; }
     .category-btn { font-size:1.1em; padding:15px; }
-  }
+}
 </style>
 </head>
 <body>
@@ -222,7 +194,7 @@
   </div>
 </div>
 
-<!-- STARTERS OVERLAY -->
+<!-- STARTERS -->
 <div id="startersOverlay" class="overlay">
   <span class="close-btn" data-close="startersOverlay">&times;</span>
   <h2>Starters for the Gods</h2>
@@ -238,7 +210,7 @@
   <div class="menu-item"><h3>Keftedakia</h3><p>Greek meatballs seasoned with mint and oregano. Small bites, big flavour.</p></div>
 </div>
 
-<!-- WRAPS OVERLAY -->
+<!-- WRAPS -->
 <div id="wrapsOverlay" class="overlay">
   <span class="close-btn" data-close="wrapsOverlay">&times;</span>
   <h2>Wraps for the Gods (Pita Gyros)</h2>
@@ -250,7 +222,7 @@
   <div class="menu-item"><h3>Extra Pita</h3><p>Because one is never enough.</p></div>
 </div>
 
-<!-- PLATTERS OVERLAY -->
+<!-- PLATTERS -->
 <div id="plattersOverlay" class="overlay">
   <span class="close-btn" data-close="plattersOverlay">&times;</span>
   <h2>Greek Me Baby One More Time (Platters)</h2>
@@ -263,7 +235,7 @@
   <div class="menu-item"><h3>Greek Salad Plate</h3><p>Fresh tomato, cucumber, feta, olives, onion, oregano & olive oil. The legend that started it all.</p></div>
 </div>
 
-<!-- QUESTS OVERLAY -->
+<!-- QUESTS -->
 <div id="questsOverlay" class="overlay">
   <span class="close-btn" data-close="questsOverlay">&times;</span>
   <h2>The Greek Quests</h2>
@@ -274,7 +246,7 @@
   <div class="menu-item"><h3>Briam</h3><p>Oven-roasted vegetables in olive oil and herbs — sunshine in a tray.</p></div>
 </div>
 
-<!-- SWEET OVERLAY -->
+<!-- SWEET TREATS -->
 <div id="sweetOverlay" class="overlay">
   <span class="close-btn" data-close="sweetOverlay">&times;</span>
   <h2>Sweet Treats</h2>
@@ -284,16 +256,16 @@
   <div class="menu-item"><h3>Ravani</h3><p>Greek semolina cake drenched in syrup. A sweet hug from the Mediterranean.</p></div>
 </div>
 
-<!-- ABOUT OVERLAY -->
+<!-- ABOUT -->
 <div id="aboutOverlay" class="overlay">
   <span class="close-btn" data-close="aboutOverlay">&times;</span>
   <h2>About</h2>
   <p>
     Helen's Greek Kitchen – Three Cups Pub<br><br>
-    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking.<br>
-    Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish.<br>
+    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking.  
+    Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish.  
     From moussaka and spanakopita to perfectly grilled souvlaki and creamy tzatziki, every bite tells a story — one that usually ends with “just one more plate.”<br><br>
-    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo.<br>
+    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo.  
     It’s the best of both worlds: a British pub with a Greek soul.<br><br>
     <strong>Order from 15:00 to 22:00</strong><br>
     Greek + Mediterranean + Hot food<br>
@@ -302,29 +274,18 @@
   </p>
 </div>
 
-<!-- ALLERGENS OVERLAY -->
+<!-- ALLERGENS -->
 <div id="allergensOverlay" class="overlay">
   <span class="close-btn" data-close="allergensOverlay">&times;</span>
   <h2>Allergens</h2>
   <ul>
-    <li>Gluten</li>
-    <li>Crustaceans</li>
-    <li>Eggs</li>
-    <li>Fish</li>
-    <li>Peanuts</li>
-    <li>Soybeans</li>
-    <li>Milk</li>
-    <li>Nuts</li>
-    <li>Celery</li>
-    <li>Mustard</li>
-    <li>Sesame seeds</li>
-    <li>Sulphur dioxide and sulphites</li>
-    <li>Lupin</li>
-    <li>Molluscs</li>
+    <li>Gluten</li><li>Crustaceans</li><li>Eggs</li><li>Fish</li><li>Peanuts</li><li>Soybeans</li>
+    <li>Milk</li><li>Nuts</li><li>Celery</li><li>Mustard</li><li>Sesame seeds</li>
+    <li>Sulphur dioxide and sulphites</li><li>Lupin</li><li>Molluscs</li>
   </ul>
 </div>
 
-<!-- CONTACT OVERLAY -->
+<!-- CONTACT -->
 <div id="contactOverlay" class="overlay">
   <span class="close-btn" data-close="contactOverlay">&times;</span>
   <h2>Contact</h2>
@@ -337,34 +298,35 @@
 </footer>
 
 <script>
-  // Hamburger menu toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('nav');
-  menuToggle.addEventListener('click', () => {
+// Hamburger menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+menuToggle.addEventListener('click', () => {
     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-  });
+});
 
-  // Open overlay buttons
-  document.querySelectorAll('[data-overlay]').forEach(btn => {
+// Open overlay buttons
+document.querySelectorAll('[data-overlay]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-overlay');
-      document.getElementById(target).style.display = 'block';
-      if(window.innerWidth <= 800) nav.style.display = 'none';
+        const target = btn.getAttribute('data-overlay');
+        const overlay = document.getElementById(target);
+        overlay.classList.add('show');
+        if(window.innerWidth <= 800) nav.style.display = 'none';
     });
-  });
+});
 
-  // Close overlay buttons
-  document.querySelectorAll('.close-btn').forEach(btn => {
+// Close overlay buttons
+document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-close');
-      document.getElementById(target).style.display = 'none';
+        const target = btn.getAttribute('data-close');
+        document.getElementById(target).classList.remove('show');
     });
-  });
+});
 
-  // Close overlay when clicking outside
-  window.addEventListener('click', (e) => {
-    if(e.target.classList.contains('overlay')) e.target.style.display = 'none';
-  });
+// Close overlay when clicking outside
+window.addEventListener('click', (e) => {
+    if(e.target.classList.contains('overlay')) e.target.classList.remove('show');
+});
 </script>
 
 </body>
