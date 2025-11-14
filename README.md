@@ -34,9 +34,9 @@
     z-index: 1000;
   }
 
-  .nav-links a {
+  nav a {
     text-decoration: none;
-    color: white; /* FEHÉR menügombok */
+    color: white;
     padding: 15px 20px;
     cursor: pointer;
     font-weight: bold;
@@ -44,7 +44,7 @@
     transition: background 0.3s, transform 0.2s;
   }
 
-  .nav-links a:hover {
+  nav a:hover {
     background-color: #2874a6;
     transform: scale(1.05);
   }
@@ -60,17 +60,15 @@
     margin-top: 30px;
     border-bottom: 2px solid #2e9cab;
     padding-bottom: 5px;
-    text-align: center;
   }
 
   .menu-item {
-    margin: 20px auto;
+    margin-bottom: 20px;
     padding: 15px;
     border-left: 5px solid #2e9cab;
     background-color: #e6f2ff;
     border-radius: 8px;
     text-align: center;
-    max-width: 700px;
   }
 
   .menu-item h3 {
@@ -97,8 +95,7 @@
     font-size:1.4em;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-    margin:20px auto;
-    text-align: center;
+    margin:20px;
   }
 
   .order-button:hover {
@@ -128,6 +125,10 @@
     z-index: 2000;
     padding: 50px 20px;
     text-align: center;
+  }
+
+  .overlay h2 {
+    color: #2e9cab;
   }
 
   .close-btn {
@@ -164,52 +165,15 @@
     transform: scale(1.05);
   }
 
-  /* Hamburger menu */
-  .hamburger {
-    display: none;
-    font-size: 2em;
-    cursor: pointer;
-    color: white;
-    position: absolute;
-    right: 20px;
-    top: 10px;
-  }
-
-  .nav-links {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 800px) {
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #2e9cab;
-      width: 100%;
-    }
-
-    .nav-links.show {
-      display: flex;
-    }
-
-    .hamburger {
-      display: block;
-    }
-
-    .nav-links a {
-      width: 100%;
-      padding: 15px;
-      box-sizing: border-box;
-    }
-  }
-
   @media (max-width: 600px) {
+    nav a { padding: 10px; font-size: 0.9em; }
     header img { max-height: 250px; }
     .order-button { font-size:1.2em; padding:15px 25px; }
     .category-btn { font-size:1.1em; padding:15px; }
   }
+
+  /* Force white for About, Allergens, Contact buttons */
+  nav a[data-overlay] { color: white !important; }
 </style>
 </head>
 <body>
@@ -219,20 +183,17 @@
 </header>
 
 <nav>
-  <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-  <div class="nav-links" id="navLinks">
-    <a data-overlay="aboutOverlay">About</a>
-    <a data-overlay="allergensOverlay">Allergens</a>
-    <a data-overlay="contactOverlay">Contact</a>
-  </div>
+  <a data-overlay="aboutOverlay">About</a>
+  <a data-overlay="allergensOverlay">Allergens</a>
+  <a data-overlay="contactOverlay">Contact</a>
 </nav>
 
-<section id="home-buttons" style="margin-top:50px;">
+<section id="home-buttons" style="text-align:center; margin-top:50px;">
   <a id="menuBtnHome" class="order-button" data-overlay="categoryOverlay">Menu</a>
   <a href="https://goodeats.io/helensgreek" class="order-button" target="_blank">Order Now</a>
 </section>
 
-<!-- CATEGORY OVERLAY -->
+<!-- CATEGORY SELECTOR OVERLAY -->
 <div id="categoryOverlay" class="overlay">
   <span class="close-btn" data-close="categoryOverlay">&times;</span>
   <h2>Select a Category</h2>
@@ -297,7 +258,7 @@
   <div class="menu-item"><h3>Briam</h3><p>Oven-roasted vegetables in olive oil and herbs — sunshine in a tray.</p></div>
 </div>
 
-<!-- SWEET OVERLAY -->
+<!-- SWEET TREATS OVERLAY -->
 <div id="sweetOverlay" class="overlay">
   <span class="close-btn" data-close="sweetOverlay">&times;</span>
   <h2>Sweet Treats</h2>
@@ -313,10 +274,10 @@
   <h2>About</h2>
   <p>
     Helen's Greek Kitchen – Three Cups Pub<br><br>
-    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking.  
-    Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish.  
+    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking.<br>
+    Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish.<br>
     From moussaka and spanakopita to perfectly grilled souvlaki and creamy tzatziki, every bite tells a story — one that usually ends with “just one more plate.”<br><br>
-    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo.  
+    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo.<br>
     It’s the best of both worlds: a British pub with a Greek soul.<br><br>
     <strong>Order from 15:00 to 22:00</strong><br>
     Greek + Mediterranean + Hot food<br>
@@ -329,51 +290,44 @@
 <div id="allergensOverlay" class="overlay">
   <span class="close-btn" data-close="allergensOverlay">&times;</span>
   <h2>Allergens</h2>
-  <p>Information about allergens will be provided on request.</p>
+  <p>Information on allergens is available on request.</p>
 </div>
 
 <!-- CONTACT OVERLAY -->
 <div id="contactOverlay" class="overlay">
   <span class="close-btn" data-close="contactOverlay">&times;</span>
   <h2>Contact</h2>
-  <p>Email: <a href="mailto:helen@helenskitchen.uk">helen@helenskitchen.uk</a></p>
+  <p>Email: helen@helenskitchen.uk</p>
   <p>Three Cups Pub, MK403JR, Bedford 45 Newnham St</p>
 </div>
 
 <footer>
-  &copy; 2025 Helen's Greek Kitchen. All rights reserved.
+  &copy; 2025 Helen's Greek Kitchen. All rights reserved. Designed by Miska.
 </footer>
 
 <script>
-  // Overlay functionality
+  // Open overlay buttons
   document.querySelectorAll('[data-overlay]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const overlay = document.getElementById(btn.getAttribute('data-overlay'));
-      overlay.style.display = 'block';
+      const target = btn.getAttribute('data-overlay');
+      document.getElementById(target).style.display = 'block';
     });
   });
 
+  // Close buttons
   document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const overlay = document.getElementById(btn.getAttribute('data-close'));
-      overlay.style.display = 'none';
+      const target = btn.getAttribute('data-close');
+      document.getElementById(target).style.display = 'none';
     });
   });
 
-  // Close overlay when clicking outside
-  window.addEventListener('click', e => {
-    if(e.target.classList.contains('overlay')){
+  // Close when clicking outside overlay content
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('overlay')) {
       e.target.style.display = 'none';
     }
   });
-
-  // Hamburger menu toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
 </script>
-
 </body>
 </html>
