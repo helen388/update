@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -49,6 +48,34 @@
     transform: scale(1.05);
   }
 
+  .hamburger {
+    display: none;
+    font-size: 2em;
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #2e9cab;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    left: 0;
+    z-index: 1050;
+  }
+
+  .mobile-nav a {
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+  }
+
   section {
     max-width: 1000px;
     margin: 20px auto;
@@ -86,7 +113,7 @@
     align-items:center;
     justify-content:center;
     background-color:#2e9cab;
-    color:white;
+    color:white !important;
     padding:18px 35px;
     border-radius:50px;
     text-decoration:none;
@@ -111,7 +138,7 @@
     margin-top: 30px;
   }
 
-  /* Overlay alapbeállítás */
+  /* Overlay */
   .overlay {
     position: fixed;
     top: 0;
@@ -139,281 +166,128 @@
     color: #2e9cab;
   }
 
-  @media (max-width: 600px) {
-    nav a {
-      padding: 10px;
-      font-size: 0.9em;
-    }
-    header img {
-      max-height: 250px;
-    }
-    .order-button {
-      font-size:1.2em;
-      padding: 15px 25px;
-    }
+  /* Category selector */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 50px auto;
+  }
+
+  .category-btn {
+    background: #2e9cab;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .category-btn:hover {
+    background:#1f618d;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    nav a { display: none; }
+    .hamburger { display: block; }
+    .mobile-nav { display: none; }
+    header img { max-height: 250px; }
+    .order-button { font-size:1.2em; padding:15px 25px; }
+    .category-btn { font-size:1.1em; padding:15px; }
   }
 </style>
 </head>
-
 <body>
+
 <header>
   <img src="header2.png" alt="Helen's Greek Kitchen Banner">
+  <div class="hamburger"><i class="fas fa-bars"></i></div>
 </header>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#allergens">Allergens</a>
-  <a href="#contact">Contact</a>
+  <a data-overlay="aboutOverlay">About</a>
+  <a data-overlay="allergensOverlay">Allergens</a>
+  <a data-overlay="contactOverlay">Contact</a>
 </nav>
 
+<div class="mobile-nav">
+  <a data-overlay="aboutOverlay">About</a>
+  <a data-overlay="allergensOverlay">Allergens</a>
+  <a data-overlay="contactOverlay">Contact</a>
+  <a data-overlay="categoryOverlay">Menu</a>
+  <a href="https://goodeats.io/helensgreek" target="_blank">Order Now</a>
+</div>
+
 <section id="home-buttons" style="text-align:center; margin-top:50px;">
-  <a id="menuBtnHome" class="order-button">Menu</a>
+  <a id="menuBtnHome" class="order-button" data-overlay="categoryOverlay">Menu</a>
   <a href="https://goodeats.io/helensgreek" class="order-button" target="_blank">Order Now</a>
 </section>
-<!-- STARTERS OVERLAY -->
+
+<!-- CATEGORY SELECTOR OVERLAY -->
+<div id="categoryOverlay" class="overlay">
+  <span class="close-btn" data-close="categoryOverlay">&times;</span>
+  <h2>Select a Category</h2>
+
+  <div class="category-grid">
+    <div class="category-btn" data-overlay="startersOverlay">Starters</div>
+    <div class="category-btn" data-overlay="wrapsOverlay">Wraps</div>
+    <div class="category-btn" data-overlay="plattersOverlay">Platters</div>
+    <div class="category-btn" data-overlay="questsOverlay">Greek Quests</div>
+    <div class="category-btn" data-overlay="sweetOverlay">Sweet Treats</div>
+  </div>
+</div>
+
+<!-- MENU OVERLAYS -->
 <div id="startersOverlay" class="overlay">
   <span class="close-btn" data-close="startersOverlay">&times;</span>
   <h2>Starters for the Gods</h2>
-
-  <div class="menu-item">
-    <h3>Tzatziki</h3>
-    <p>Cucumber, Greek yogurt & garlic dip. The cool breeze of Mount Olympus captured in a bowl.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Hummus</h3>
-    <p>Chickpeas, tahini, garlic & lemon. A silky dip so good even the gods double-dip.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Melitzanosalata</h3>
-    <p>Smoked aubergine with olive oil, garlic & lemon. For those who like their meze with a little mystery.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Taramasalata</h3>
-    <p>Cod roe dip. Pink, punchy & unapologetically Greek.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Dolmades</h3>
-    <p>Vine leaves stuffed with rice & herbs. Like little scrolls of delicious Greek poetry.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Olives & Feta</h3>
-    <p>The salty essence of the Aegean. Simplicity perfected.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Spanakopita</h3>
-    <p>Spinach and feta wrapped in golden filo pastry. Zeus himself would approve.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Gigantes</h3>
-    <p>Butter beans baked in tomato and herbs — hearty, humble, heavenly.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Halloumi</h3>
-    <p>Grilled Cypriot cheese with honey drizzle. Sweet, salty, sizzling perfection.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Keftedakia</h3>
-    <p>Greek meatballs seasoned with mint and oregano. Small bites, big flavour.</p>
-  </div>
-
+  <!-- Add your starter items here -->
 </div>
-<!-- WRAPS OVERLAY -->
+
 <div id="wrapsOverlay" class="overlay">
   <span class="close-btn" data-close="wrapsOverlay">&times;</span>
   <h2>Wraps for the Gods (Pita Gyros)</h2>
-
-  <div class="menu-item">
-    <h3>Pork Pita Gyros</h3>
-    <p>Tender slices of marinated pork wrapped with tomato, onion, fries & tzatziki in warm Greek pita. Simple, divine, authentic.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Chicken Pita Gyros</h3>
-    <p>Juicy grilled chicken with tomato, onion, fries & tzatziki. A wrap worthy of Apollo himself.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Halloumi Pita</h3>
-    <p>Grilled halloumi with salad, fries & a drizzle of honey — the vegetarian hero of the Olympus.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Falafel Pita</h3>
-    <p>Chickpea patties with salad, fries & hummus — flavourful, filling, fully legendary.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Mixed Gyros Pita</h3>
-    <p>Half pork, half chicken, all Greek power. Balanced, bold, unbeatable.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Extra Pita</h3>
-    <p>Because one is never enough.</p>
-  </div>
-
+  <!-- Add your wrap items here -->
 </div>
 
-<!-- PLATTERS OVERLAY -->
 <div id="plattersOverlay" class="overlay">
   <span class="close-btn" data-close="plattersOverlay">&times;</span>
   <h2>Greek Me Baby One More Time (Platters)</h2>
-
-  <div class="menu-item">
-    <h3>Pork Gyros Plate</h3>
-    <p>Tender pork gyros served with fries, pita, salad & tzatziki.  
-    As classic as a Santorini sunset.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Chicken Gyros Plate</h3>
-    <p>Juicy marinated chicken gyros with fries, pita, salad & tzatziki.  
-    For when you want the full Greek treatment.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Mixed Gyros Plate</h3>
-    <p>A perfect harmony of pork & chicken gyros.  
-    Served with fries, salad, pita & tzatziki.  
-    Because why choose?</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Souvlaki Plate (Pork or Chicken)</h3>
-    <p>Two skewers of your choice, flame-grilled & fabulous.  
-    Served with fries, salad, pita & tzatziki.  
-    Spartan strength guaranteed.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Halloumi Plate</h3>
-    <p>Grilled halloumi cheese with salad, fries, pita & tzatziki.  
-    Proof that the gods love vegetarians too.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Falafel Plate</h3>
-    <p>Golden falafel with salad, fries, pita & hummus.  
-    100% plant-based, 1000% delicious.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Greek Salad Plate</h3>
-    <p>Fresh tomato, cucumber, feta, olives, onion, oregano & olive oil.  
-    The legend that started it all.</p>
-  </div>
-
+  <!-- Add your platter items here -->
 </div>
-<!-- QUESTS OVERLAY -->
+
 <div id="questsOverlay" class="overlay">
   <span class="close-btn" data-close="questsOverlay">&times;</span>
   <h2>The Greek Quests</h2>
-
-  <div class="menu-item">
-    <h3>Moussaka</h3>
-    <p>Layers of aubergine, spiced mince, and creamy béchamel baked golden.  
-    Comfort food, Greek-style.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Pastitsio</h3>
-    <p>Greek pasta bake with mince and béchamel — the Mediterranean’s answer to lasagna.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Stifado</h3>
-    <p>Beef stew slow-cooked with sweet onions and spices.  
-    Deep, rich, and made with love (and red wine).</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Kleftiko</h3>
-    <p>Lamb baked slowly until tender, with lemon, garlic, and herbs.  
-    A dish fit for heroes and rebels alike.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Briam</h3>
-    <p>Oven-roasted vegetables in olive oil and herbs — sunshine in a tray.</p>
-  </div>
-
+  <!-- Add your quest items here -->
 </div>
-<!-- SWEET TREATS OVERLAY -->
+
 <div id="sweetOverlay" class="overlay">
   <span class="close-btn" data-close="sweetOverlay">&times;</span>
   <h2>Sweet Treats</h2>
-
-  <div class="menu-item">
-    <h3>Baklavas</h3>
-    <p>Flaky, nutty, sticky perfection. Athena would swap her owl for a piece.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Chocolate Cake</h3>
-    <p>Decadent, rich, and dangerously delicious. Even Hades would sneak a slice.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Orange Cake</h3>
-    <p>Zesty, sweet and sun-kissed. Helios himself might approve.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Ravani</h3>
-    <p>Greek semolina cake drenched in syrup. A sweet hug from the Mediterranean.</p>
-  </div>
+  <!-- Add your sweet items here -->
 </div>
 
-<!-- ABOUT OVERLAY -->
 <div id="aboutOverlay" class="overlay">
   <span class="close-btn" data-close="aboutOverlay">&times;</span>
   <h2>About</h2>
-  <p>
-    Helen's Greek Kitchen – Three Cups Pub<br><br>
-    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking.  
-    Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish.  
-    From moussaka and spanakopita to perfectly grilled souvlaki and creamy tzatziki, every bite tells a story — one that usually ends with “just one more plate.”<br><br>
-    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo.  
-    It’s the best of both worlds: a British pub with a Greek soul.<br><br>
-    <strong>Order from 15:00 to 22:00</strong><br>
-    Greek + Mediterranean + Hot food<br>
-    Collection + Table orders<br>
-    Order from Table QR Code
-  </p>
+  <p>Helen's Greek Kitchen – Three Cups Pub ...</p>
 </div>
 
-<!-- ALLERGENS OVERLAY -->
 <div id="allergensOverlay" class="overlay">
   <span class="close-btn" data-close="allergensOverlay">&times;</span>
   <h2>Allergens</h2>
-  <ul class="allergen-list">
-    <li>Gluten</li>
-    <li>Crustaceans</li>
-    <li>Eggs</li>
-    <li>Fish</li>
-    <li>Peanuts</li>
-    <li>Soybeans</li>
-    <li>Milk</li>
-    <li>Nuts</li>
-    <li>Celery</li>
-    <li>Mustard</li>
-    <li>Sesame seeds</li>
-    <li>Sulphur dioxide and sulphites</li>
-    <li>Lupin</li>
-    <li>Molluscs</li>
+  <ul>
+    <li>Gluten</li><li>Crustaceans</li><li>Eggs</li><li>Fish</li><li>Peanuts</li>
+    <li>Soybeans</li><li>Milk</li><li>Nuts</li><li>Celery</li><li>Mustard</li>
+    <li>Sesame seeds</li><li>Sulphur dioxide and sulphites</li><li>Lupin</li><li>Molluscs</li>
   </ul>
 </div>
 
-<!-- CONTACT OVERLAY -->
 <div id="contactOverlay" class="overlay">
   <span class="close-btn" data-close="contactOverlay">&times;</span>
   <h2>Contact</h2>
@@ -426,11 +300,19 @@
 </footer>
 
 <script>
+  // Hamburger toggle
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  hamburger.addEventListener('click', () => {
+    mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+  });
+
   // Open overlay buttons
   document.querySelectorAll('[data-overlay]').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.getAttribute('data-overlay');
       document.getElementById(target).style.display = 'block';
+      if(mobileNav) mobileNav.style.display = 'none';
     });
   });
 
@@ -451,4 +333,3 @@
 </script>
 </body>
 </html>
-
