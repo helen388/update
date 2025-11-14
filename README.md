@@ -305,7 +305,6 @@
   <h2>Contact</h2>
   <p>Email: helen@helenskitchen.uk</p>
   <p>Three Cups Pub, MK403JR, Bedford 45 Newnham St</p>
-  <p>Phone: +44 123 456 7890</p>
 </div>
 
 <footer>
