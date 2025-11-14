@@ -1,15 +1,18 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Helen's Greek Kitchen</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
 <style>
   body {
     font-family: 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f8ff;
-    color: #2e2b2b;
+    color: #2e9cab;
     line-height: 1.6;
     scroll-behavior: smooth;
   }
@@ -24,7 +27,7 @@
   nav {
     display: flex;
     justify-content: center;
-    background-color: #1f618d;
+    background-color: #2e9cab;
     flex-wrap: wrap;
     position: sticky;
     top: 0;
@@ -53,16 +56,16 @@
   }
 
   h2 {
-    color: #1f618d;
+    color: #2e9cab;
     margin-top: 30px;
-    border-bottom: 2px solid #1f618d;
+    border-bottom: 2px solid #2e9cab;
     padding-bottom: 5px;
   }
 
   .menu-item {
     margin-bottom: 20px;
     padding: 15px;
-    border-left: 5px solid #1f618d;
+    border-left: 5px solid #2e9cab;
     background-color: #e6f2ff;
     border-radius: 8px;
   }
@@ -70,30 +73,19 @@
   .menu-item h3 {
     margin: 0 0 5px 0;
     font-size: 1.3em;
-    color: #2874a6;
+    color: #2e9cab;
   }
 
   .menu-item p {
     margin: 0;
-  }
-
-  .menu-item .price {
-    font-weight: bold;
-    margin-top: 5px;
-    color: #1f618d;
-  }
-
-  .allergen-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 10px 0;
+    color: #2e9cab;
   }
 
   .order-button {
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    background-color:#2874a6;
+    background-color:#2e9cab;
     color:white;
     padding:18px 35px;
     border-radius:50px;
@@ -102,12 +94,7 @@
     font-size:1.4em;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-    margin:20px 0;
-  }
-
-  .order-button i {
-    margin-right:10px;
-    font-size:1.2em;
+    margin:20px;
   }
 
   .order-button:hover {
@@ -124,6 +111,34 @@
     margin-top: 30px;
   }
 
+  /* Overlay alapbeállítás */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(240, 248, 255, 0.98);
+    overflow-y: auto;
+    display: none;
+    z-index: 2000;
+    padding: 50px 20px;
+  }
+
+  .overlay h2 {
+    text-align: center;
+    color: #2e9cab;
+  }
+
+  .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 2em;
+    cursor: pointer;
+    color: #2e9cab;
+  }
+
   @media (max-width: 600px) {
     nav a {
       padding: 10px;
@@ -138,234 +153,204 @@
     }
   }
 </style>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
 
+<body>
 <header>
   <img src="header2.png" alt="Helen's Greek Kitchen Banner">
 </header>
 
 <nav>
   <a href="#about">About</a>
-  <a href="#menu">Menu</a>
-  <a href="#contact">Contact</a>
   <a href="#allergens">Allergens</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-  <h2>About</h2>
-  <p>
-    Helen's Greek Kitchen – Three Cups Pub<br>
-    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking. Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish. From moussaka and spanakopita to perfectly grilled souvlaki and creamy tzatziki, every bite tells a story — one that usually ends with “just one more plate.”<br><br>
-    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo. It’s the best of both worlds: a British pub with a Greek soul.<br><br>
-    Whether you’re here for a quiet pint, a lively dinner, or to argue over who makes the best baklava, you’ll always find good food, good company, and a warm welcome.<br><br>
-    <strong>Order from 15:00 to 22:00</strong><br>
-    Greek + Mediterranean + Hot food<br>
-    Collection + Table orders<br>
-    Order from Table QR Code
-  </p>
-  <a href="https://goodeats.io/helensgreek" class="order-button" target="_blank">
-    <i class="fas fa-utensils"></i> Order Now
-  </a>
+<section id="home-buttons" style="text-align:center; margin-top:50px;">
+  <a id="menuBtnHome" class="order-button">Menu</a>
+  <a href="https://goodeats.io/helensgreek" class="order-button" target="_blank">Order Now</a>
 </section>
-
-<section id="menu">
-  <h2>STARTERS FOR THE GODS</h2>
-  <p>Before the main feast, the gods liked to snack too. Sharing is optional. Greed is divine.</p>
+<!-- STARTERS OVERLAY -->
+<div id="startersOverlay" class="overlay">
+  <span class="close-btn" data-close="startersOverlay">&times;</span>
+  <h2>Starters for the Gods</h2>
 
   <div class="menu-item">
-    <h3>Allitis Pitta</h3>
-    <p>A homemade Classic from our own Greek Legend Helen. Beef Mince Meat on a pitta bread, served with a little salad and Authentic Greek Yogurt.</p>
+    <h3>Tzatziki</h3>
+    <p>Cucumber, Greek yogurt & garlic dip. The cool breeze of Mount Olympus captured in a bowl.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Feta Pastry with Honey</h3>
-    <p>Crispy, Salty, Sweet and scandalously addictive. PDO Feta cheese wrapped in filo pastry and drizzled with honey & sesame.</p>
+    <h3>Hummus</h3>
+    <p>Chickpeas, tahini, garlic & lemon. A silky dip so good even the gods double-dip.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Kolokithokeftedes</h3>
-    <p>Crispy Courgettes fritters bursting with herb and Feta – Zeus himself declared them "dangerously moreish".</p>
+    <h3>Melitzanosalata</h3>
+    <p>Smoked aubergine with olive oil, garlic & lemon. For those who like their meze with a little mystery.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Greek Salad</h3>
-    <p>Fresh, Crunchy and very Athenian-approved. Authentic Greek Salad with fresh tomatoes, cucumber, bell pepper, onions, olives, extra virgin olive-oil and oregano.</p>
+    <h3>Taramasalata</h3>
+    <p>Cod roe dip. Pink, punchy & unapologetically Greek.</p>
   </div>
 
   <div class="menu-item">
     <h3>Dolmades</h3>
-    <p>Tender vine leaves, stuffed with rice and herbs, basically Greek Sushi but with more Salt. Served with a fresh lemon sauce.</p>
+    <p>Vine leaves stuffed with rice & herbs. Like little scrolls of delicious Greek poetry.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Talagani Cheese</h3>
-    <p>Grilled to golden perfection, crispy outside heavenly inside. Even Apollo could not resist this melody of flavour.</p>
+    <h3>Olives & Feta</h3>
+    <p>The salty essence of the Aegean. Simplicity perfected.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Tzatziki</h3>
-    <p>Cool Authentic Greek Yogurt, cucumber & garlic – Combo of destiny. The shield that protects all gyros.</p>
+    <h3>Spanakopita</h3>
+    <p>Spinach and feta wrapped in golden filo pastry. Zeus himself would approve.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Aubergine Dip</h3>
-    <p>Smokey, silky and deeply mysterious. If the Oracle of Delphi made Sushi, this would be it!</p>
+    <h3>Gigantes</h3>
+    <p>Butter beans baked in tomato and herbs — hearty, humble, heavenly.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Houmous</h3>
-    <p>Smooth, Garlicky and made with love (and Chickpeas.) The dip of diplomacy – unites all tables. Served with Extra Virgin Olive Oil and paprika.</p>
+    <h3>Halloumi</h3>
+    <p>Grilled Cypriot cheese with honey drizzle. Sweet, salty, sizzling perfection.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Olives</h3>
-    <p>Simple. Classic. Eternal. Athena’s proudest invention. Respect the Olive!</p>
+    <h3>Keftedakia</h3>
+    <p>Greek meatballs seasoned with mint and oregano. Small bites, big flavour.</p>
   </div>
 
-  <!-- WRAPS FOR THE GODS -->
-  <h2>WRAPS FOR THE GODS (PITA GYROS)</h2>
-  <p>All served in fluffy Greek pita with salad, fries & sauce. Don't ask for ketchup – we're not a chip shop.</p>
+</div>
+<!-- WRAPS OVERLAY -->
+<div id="wrapsOverlay" class="overlay">
+  <span class="close-btn" data-close="wrapsOverlay">&times;</span>
+  <h2>Wraps for the Gods (Pita Gyros)</h2>
 
   <div class="menu-item">
-    <h3>Pork Gyros</h3>
-    <p>Juicy, smoky, and 100% approved by the intellectual Athenians. Served with fries, tomatoes, onions, and Tzatziki.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Chicken Gyros</h3>
-    <p>Tastes like a Greek summer, desired by ancient Spartan warriors. Served with fries, tomatoes, onions, and Tzatziki.</p>
+    <h3>Pork Pita Gyros</h3>
+    <p>Tender slices of marinated pork wrapped with tomato, onion, fries & tzatziki in warm Greek pita. Simple, divine, authentic.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Pork Souvlaki</h3>
-    <p>Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and our divine sauce.</p>
+    <h3>Chicken Pita Gyros</h3>
+    <p>Juicy grilled chicken with tomato, onion, fries & tzatziki. A wrap worthy of Apollo himself.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Chicken Souvlaki</h3>
-    <p>Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and our legendary sauce.</p>
+    <h3>Halloumi Pita</h3>
+    <p>Grilled halloumi with salad, fries & a drizzle of honey — the vegetarian hero of the Olympus.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Kebab Souvlaki</h3>
-    <p>All the juicy, grilled goodness of our kebab, wrapped tighter than Athena’s helmet. Sweet red peppers and our secret “ambrosia-inspired” sauce create a Greek miracle in every mouthful.</p>
+    <h3>Falafel Pita</h3>
+    <p>Chickpea patties with salad, fries & hummus — flavourful, filling, fully legendary.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Greek Sausage</h3>
-    <p>Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Herbs so good, even Dionysus would raise his goblet in approval.</p>
+    <h3>Mixed Gyros Pita</h3>
+    <p>Half pork, half chicken, all Greek power. Balanced, bold, unbeatable.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Talagani Wrap</h3>
-    <p>Grilled Talagani (our very own halloumi), peppers, and a drizzle of zesty lemon sauce make this a Mount Olympus-worthy delight.</p>
+    <h3>Extra Pita</h3>
+    <p>Because one is never enough.</p>
   </div>
 
-  <!-- GREEK ME BABY ONE MORE TIME -->
-  <h2>GREEK ME BABY ONE MORE TIME</h2>
-  <p>Because you always come back for more. Don’t deny it.</p>
+</div>
+
+<!-- PLATTERS OVERLAY -->
+<div id="plattersOverlay" class="overlay">
+  <span class="close-btn" data-close="plattersOverlay">&times;</span>
+  <h2>Greek Me Baby One More Time (Platters)</h2>
 
   <div class="menu-item">
-    <h3>Pork Kalamakia</h3>
-    <p>Tender pork skewers, grilled to perfection. Includes 3 juicy pork skewers, served with chips and salad.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Chicken Kalamakia</h3>
-    <p>Succulent chicken skewers, marinated and flame-grilled until golden. Includes 3 chicken skewers, served with chips and salad.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Kebab Portion</h3>
-    <p>Succulent, juicy, and grilled with the fire of Hephaestus himself. 3 juicy kebabs served with fries and salad.</p>
+    <h3>Pork Gyros Plate</h3>
+    <p>Tender pork gyros served with fries, pita, salad & tzatziki.  
+    As classic as a Santorini sunset.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Mixed Gyros</h3>
-    <p>The ultimate gyro adventure: a little chicken, a little pork, a lot of deliciousness. Served with fries, pittas, bread, and salad.</p>
+    <h3>Chicken Gyros Plate</h3>
+    <p>Juicy marinated chicken gyros with fries, pita, salad & tzatziki.  
+    For when you want the full Greek treatment.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Sausage Platter</h3>
-    <p>A heroic lineup of sausages, grilled to perfection. Served with fries and salad.</p>
+    <h3>Mixed Gyros Plate</h3>
+    <p>A perfect harmony of pork & chicken gyros.  
+    Served with fries, salad, pita & tzatziki.  
+    Because why choose?</p>
   </div>
 
   <div class="menu-item">
-    <h3>Vegetarian Platter</h3>
-    <p>Talagani, peppers served with fries and salad – a garden party straight from Mount Olympus.</p>
+    <h3>Souvlaki Plate (Pork or Chicken)</h3>
+    <p>Two skewers of your choice, flame-grilled & fabulous.  
+    Served with fries, salad, pita & tzatziki.  
+    Spartan strength guaranteed.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Mixed Grill Platter</h3>
-    <p>A little bit of everything for the indecisive Greek legend. Feeds 2-3 fully grown Greeks.</p>
-  </div>
-
-  <!-- THE GREEK QUESTS -->
-  <h2>THE GREEK QUESTS</h2>
-  <div class="menu-item">
-    <h3>Bifteki</h3>
-    <p>Juicy Greek-style beef patties filled with herbs and maybe a secret or two from Mount Parnassus. Potatoes accompany.</p>
+    <h3>Halloumi Plate</h3>
+    <p>Grilled halloumi cheese with salad, fries, pita & tzatziki.  
+    Proof that the gods love vegetarians too.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Briam</h3>
-    <p>Vibrant medley of baked vegetables, olive oil, and herbs. Served with fries.</p>
+    <h3>Falafel Plate</h3>
+    <p>Golden falafel with salad, fries, pita & hummus.  
+    100% plant-based, 1000% delicious.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Gemista</h3>
-    <p>Peppers and tomatoes stuffed with herby rice and good vibes only. Served with fries.</p>
+    <h3>Greek Salad Plate</h3>
+    <p>Fresh tomato, cucumber, feta, olives, onion, oregano & olive oil.  
+    The legend that started it all.</p>
+  </div>
+
+</div>
+<!-- QUESTS OVERLAY -->
+<div id="questsOverlay" class="overlay">
+  <span class="close-btn" data-close="questsOverlay">&times;</span>
+  <h2>The Greek Quests</h2>
+
+  <div class="menu-item">
+    <h3>Moussaka</h3>
+    <p>Layers of aubergine, spiced mince, and creamy béchamel baked golden.  
+    Comfort food, Greek-style.</p>
   </div>
 
   <div class="menu-item">
-    <h3>Giouvesti</h3>
-    <p>Tender chicken baked with orzo, tomato, and a hint of cinnamon. Comes with fries.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Kleftiko</h3>
-    <p>Lamb so tender it practically sings of Greek islands and olive groves. Served with roast potatoes.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Lemon Chicken</h3>
-    <p>Tender chicken baked in zesty lemon sauce. Fries on the side.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Mousakas</h3>
-    <p>Layers of aubergine, spiced mince, and creamy béchamel baked golden.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Paboutskia</h3>
-    <p>Stuffed aubergines overflowing with spiced mince and sunshine.</p>
-  </div>
-
-  <div class="menu-item">
-  <h3>Pastitsio</h3>
- <p>Pasta, spiced mince, and luscious béchamel in perfect harmony.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Plaki Fish</h3>
-    <p>Oven-baked fish with tomatoes, onions, olives, and herbs. Fries on the side.</p>
-  </div>
-
-  <div class="menu-item">
-    <h3>Red Chicken</h3>
-    <p>Tender chicken simmered in rich tomato sauce kissed by the sun. Fries on the side.</p>
+    <h3>Pastitsio</h3>
+    <p>Greek pasta bake with mince and béchamel — the Mediterranean’s answer to lasagna.</p>
   </div>
 
   <div class="menu-item">
     <h3>Stifado</h3>
-    <p>Slow-cooked beef with sweet onions and romantic spices. Fries accompany.</p>
+    <p>Beef stew slow-cooked with sweet onions and spices.  
+    Deep, rich, and made with love (and red wine).</p>
   </div>
 
-  <!-- SWEET TREATS -->
-  <h2>SWEET TREATS</h2>
+  <div class="menu-item">
+    <h3>Kleftiko</h3>
+    <p>Lamb baked slowly until tender, with lemon, garlic, and herbs.  
+    A dish fit for heroes and rebels alike.</p>
+  </div>
+
+  <div class="menu-item">
+    <h3>Briam</h3>
+    <p>Oven-roasted vegetables in olive oil and herbs — sunshine in a tray.</p>
+  </div>
+
+</div>
+<!-- SWEET TREATS OVERLAY -->
+<div id="sweetOverlay" class="overlay">
+  <span class="close-btn" data-close="sweetOverlay">&times;</span>
+  <h2>Sweet Treats</h2>
 
   <div class="menu-item">
     <h3>Baklavas</h3>
@@ -386,35 +371,84 @@
     <h3>Ravani</h3>
     <p>Greek semolina cake drenched in syrup. A sweet hug from the Mediterranean.</p>
   </div>
+</div>
 
-</section>
+<!-- ABOUT OVERLAY -->
+<div id="aboutOverlay" class="overlay">
+  <span class="close-btn" data-close="aboutOverlay">&times;</span>
+  <h2>About</h2>
+  <p>
+    Helen's Greek Kitchen – Three Cups Pub<br><br>
+    Welcome to Helen’s Greek Kitchen at The Three Cups Pub — where the charm of a classic English pub meets the fiery heart of Greek cooking.  
+    Helen brings her passion straight from the islands — bold flavours, no shortcuts, and a little bit of drama in every dish.  
+    From moussaka and spanakopita to perfectly grilled souvlaki and creamy tzatziki, every bite tells a story — one that usually ends with “just one more plate.”<br><br>
+    The Three Cups keeps the drinks flowing — crisp pints, fine wines, and the occasional cheeky ouzo.  
+    It’s the best of both worlds: a British pub with a Greek soul.<br><br>
+    <strong>Order from 15:00 to 22:00</strong><br>
+    Greek + Mediterranean + Hot food<br>
+    Collection + Table orders<br>
+    Order from Table QR Code
+  </p>
+</div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: info@helenskitchen.uk</p>
-  <p>Address: 45 Newnham St, Bedford MK40 3JR</p>
-</section>
-
-<section id="allergens">
+<!-- ALLERGENS OVERLAY -->
+<div id="allergensOverlay" class="overlay">
+  <span class="close-btn" data-close="allergensOverlay">&times;</span>
   <h2>Allergens</h2>
-  <p>At Helen's Greek Kitchen, we use traditional Greek ingredients and family recipes. Please let us know if you have any food allergies or dietary requirements.</p>
   <ul class="allergen-list">
-    <li>Dairy (milk, cheese, yoghurt)</li>
-    <li>Gluten (wheat, barley, bread, pita, pastry)</li>
-    <li>Nuts (almonds, walnuts, pistachios)</li>
-    <li>Shellfish (prawns, mussels, calamari)</li>
+    <li>Gluten</li>
+    <li>Crustaceans</li>
     <li>Eggs</li>
-    <li>Sesame (tahini, seeds, bread toppings)</li>
-    <li>Soy</li>
+    <li>Fish</li>
+    <li>Peanuts</li>
+    <li>Soybeans</li>
+    <li>Milk</li>
+    <li>Nuts</li>
+    <li>Celery</li>
     <li>Mustard</li>
-    <li>Sulphites (in dressings and wines)</li>
+    <li>Sesame seeds</li>
+    <li>Sulphur dioxide and sulphites</li>
+    <li>Lupin</li>
+    <li>Molluscs</li>
   </ul>
-  <p>We take care to avoid cross-contamination but cannot guarantee any dish is completely allergen-free. Please ask our team for advice. Efharisto!</p>
-</section>
+</div>
+
+<!-- CONTACT OVERLAY -->
+<div id="contactOverlay" class="overlay">
+  <span class="close-btn" data-close="contactOverlay">&times;</span>
+  <h2>Contact</h2>
+  <p>Email: helen@helenskitchen.uk</p>
+  <p>Three Cups Pub, MK403JR, Bedford 45 Newnham St</p>
+</div>
 
 <footer>
-  <p>© Helen's Greek Kitchen. All rights reserved. Designed by Miska.</p> 
+  &copy; 2025 Helen's Greek Kitchen. All rights reserved. Designed by Miska.
 </footer>
 
+<script>
+  // Open overlay buttons
+  document.querySelectorAll('[data-overlay]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-overlay');
+      document.getElementById(target).style.display = 'block';
+    });
+  });
+
+  // Close buttons
+  document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-close');
+      document.getElementById(target).style.display = 'none';
+    });
+  });
+
+  // Close when clicking outside overlay content
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('overlay')) {
+      e.target.style.display = 'none';
+    }
+  });
+</script>
 </body>
 </html>
+
