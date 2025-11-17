@@ -310,7 +310,7 @@
             .action-button {
                 padding: 18px 35px;
                 font-size: 1.2em;
-            position: relative;
+                position: relative;
                 z-index: 100;
             }
 
@@ -500,6 +500,91 @@
             <div class="menu-item">
                 <h3>Talagani Wrap</h3>
                 <p>Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLATTERS MENÜ -->
+    <div id="plattersMenu" class="menu-overlay">
+        <span class="close-overlay" data-close="plattersMenu">&times;</span>
+        <div class="menu-header">
+            <h2>Greek Me Baby One More Time</h2>
+            <p>Platters fit for Olympus - generous portions for the truly hungry.</p>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <h3>Zeus Platter</h3>
+                <p>A feast worthy of the king of gods - mixed grill with pork, chicken, and sausage, served with rice, salad, and pita bread.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Athena's Veggie Delight</h3>
+                <p>Grilled vegetables, halloumi, feta, and our famous Greek salad. A vegetarian's dream.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Poseidon's Seafood Platter</h3>
+                <p>Grilled calamari, octopus, and shrimp served with lemon potatoes and Greek salad.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Apollo's Mixed Grill</h3>
+                <p>Pork souvlaki, chicken gyros, and lamb kebab with all the traditional sides.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUESTS MENÜ -->
+    <div id="questsMenu" class="menu-overlay">
+        <span class="close-overlay" data-close="questsMenu">&times;</span>
+        <div class="menu-header">
+            <h2>The Greek Quests</h2>
+            <p>Traditional Greek main courses - heroic portions for legendary appetites.</p>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <h3>Moussaka</h3>
+                <p>Layers of eggplant, potatoes, and seasoned minced meat, topped with creamy béchamel sauce.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Pastitsio</h3>
+                <p>Greek baked pasta with minced meat and béchamel sauce - comfort food of the gods.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Stifado</h3>
+                <p>Slow-cooked beef stew with pearl onions in a rich tomato and red wine sauce.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Kleftiko</h3>
+                <p>Traditional lamb slow-cooked with herbs, garlic, and lemon - so tender it falls off the bone.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Gemista</h3>
+                <p>Tomatoes and bell peppers stuffed with herbed rice and baked to perfection.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SWEETS MENÜ -->
+    <div id="sweetsMenu" class="menu-overlay">
+        <span class="close-overlay" data-close="sweetsMenu">&times;</span>
+        <div class="menu-header">
+            <h2>Sweet Treats</h2>
+            <p>Desserts worthy of the gods - sweet endings to your mythical meal.</p>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <h3>Baklava</h3>
+                <p>Layers of crispy filo pastry filled with chopped nuts and sweetened with honey syrup.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Galaktoboureko</h3>
+                <p>Creamy semolina custard baked in golden filo pastry and soaked in lemon-scented syrup.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Loukoumades</h3>
+                <p>Greek honey puffs - light, airy doughnuts drizzled with honey and sprinkled with cinnamon.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Greek Yogurt with Honey and Walnuts</h3>
+                <p>Authentic Greek yogurt topped with golden honey and crunchy walnuts.</p>
             </div>
         </div>
     </div>
