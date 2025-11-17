@@ -47,13 +47,6 @@
             width: 100%;
             height: 300px;
             object-fit: cover;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5em;
-            text-align: center;
         }
 
         /* Navigáció */
@@ -351,9 +344,7 @@
 <body>
     <!-- Fejléc -->
     <header class="header">
-        <div class="header-banner">
-            Helen's Greek Kitchen
-        </div>
+        <img src="header2.png" alt="Helen's Greek Kitchen" class="header-banner">
     </header>
 
     <!-- Navigáció -->
@@ -462,37 +453,36 @@
     <div id="wrapsMenu" class="menu-overlay">
         <span class="close-overlay" data-close="wrapsMenu">&times;</span>
         <div class="menu-header">
-            <h2>Wraps for the Gods (Pita Gyros)</h2>
-            <p>All served in fluffy Greek pita with salad, fries & sauce. Don't ask for ketchup – we're not a chip shop.</p>
+            <h2>Wraps for the Gods</h2>
         </div>
         <div class="menu-items">
             <div class="menu-item">
                 <h3>Pork Gyros</h3>
-                <p>Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Pork Gyros, served with fries, tomatoes, onions, and Tzatziki.</p>
+                <p>Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Served with fries, tomatoes, onions, and Tzatziki.</p>
             </div>
             <div class="menu-item">
                 <h3>Chicken Gyros</h3>
-                <p>Tastes like a Greek summer, desired by ancient Spartan warriors. Will not give you abs, sorry. Chicken Gyros, served with fries, tomatoes, onions, and Tzatziki.</p>
+                <p>Tastes like a Greek summer, desired by ancient Spartan warriors. Served with fries, tomatoes, onions, and Tzatziki.</p>
             </div>
             <div class="menu-item">
                 <h3>Pork Souvlaki</h3>
-                <p>Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and our divine sauce – so good even Hera might sneak a bite.</p>
+                <p>Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and divine sauce.</p>
             </div>
             <div class="menu-item">
                 <h3>Chicken Souvlaki</h3>
-                <p>Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and our legendary sauce – a true hero's handheld feast.</p>
+                <p>Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and legendary sauce.</p>
             </div>
             <div class="menu-item">
                 <h3>Kebab Souvlaki</h3>
-                <p>All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and our secret "ambrosia-inspired" sauce create a Greek miracle in every mouthful...</p>
+                <p>All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and ambrosia-inspired sauce.</p>
             </div>
             <div class="menu-item">
                 <h3>Greek Sausage</h3>
-                <p>Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Not spicy – passionate. Herbs so good, even Dionysus would raise his goblet in approval.</p>
+                <p>Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Herbs so good, even Dionysus would raise his goblet in approval.</p>
             </div>
             <div class="menu-item">
                 <h3>Talagani Wrap</h3>
-                <p>Grilled Talagani (our very own halloumi), peppers, and a drizzle of zesty lemon sauce make this a Mount Olympus-worthy delight. Even Zeus needed balance, and now so do you...</p>
+                <p>Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight.</p>
             </div>
         </div>
     </div>
@@ -729,7 +719,5 @@
             }
         });
     </script>
-</body>
-</html>
 </body>
 </html>
