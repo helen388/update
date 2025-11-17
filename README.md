@@ -47,6 +47,13 @@
             width: 100%;
             height: 300px;
             object-fit: cover;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            text-align: center;
         }
 
         /* Navigáció */
@@ -274,23 +281,6 @@
             line-height: 1.5;
         }
 
-        .back-button {
-            background: var(--primary);
-            color: var(--white) !important;
-            padding: 15px 30px;
-            border-radius: 8px;
-            border: none;
-            font-size: 1em;
-            cursor: pointer;
-            transition: var(--transition);
-            margin: 10px;
-        }
-
-        .back-button:hover {
-            background: var(--primary-dark);
-            transform: translateX(-3px);
-        }
-
         /* Lábléc */
         .footer {
             background: var(--primary-dark);
@@ -361,7 +351,9 @@
 <body>
     <!-- Fejléc -->
     <header class="header">
-        <img src="header2.png" alt="Helen's Greek Kitchen" class="header-banner">
+        <div class="header-banner">
+            Helen's Greek Kitchen
+        </div>
     </header>
 
     <!-- Navigáció -->
@@ -429,7 +421,7 @@
             </div>
             <div class="menu-item">
                 <h3>Feta Pastry with Honey</h3>
-                <p>Crispy, Salty, Sweet and scandalously addictive. PDO Feta cheese wrapped in filo pastry and drizzled with honey and sesame.</p>
+                <p>Crispy, Salty, Sweet and scandalously addictive. Proof the Gods liked a dessert before dinner. PDO Feta cheese wrapped in filo pastry and drizzled with honey and sesame.</p>
             </div>
             <div class="menu-item">
                 <h3>Kolokithokeftedes</h3>
@@ -437,7 +429,7 @@
             </div>
             <div class="menu-item">
                 <h3>Greek Salad</h3>
-                <p>Fresh, Crunchy and very Athenian-approved. Authentic Greek Salad, fresh tomatoes, cucumber, bell pepper, onions, olives, extra virgin olive-oil and oregano.</p>
+                <p>Fresh, Crunchy and very Athenian-approved. Even Plato would pause his philosophy for this. Authentic Greek Salad, fresh tomatoes, cucumber, bell pepper, onions, olives, extra virgin olive-oil and oregano.</p>
             </div>
             <div class="menu-item">
                 <h3>Dolmades</h3>
@@ -470,36 +462,37 @@
     <div id="wrapsMenu" class="menu-overlay">
         <span class="close-overlay" data-close="wrapsMenu">&times;</span>
         <div class="menu-header">
-            <h2>Wraps for the Gods</h2>
+            <h2>Wraps for the Gods (Pita Gyros)</h2>
+            <p>All served in fluffy Greek pita with salad, fries & sauce. Don't ask for ketchup – we're not a chip shop.</p>
         </div>
         <div class="menu-items">
             <div class="menu-item">
                 <h3>Pork Gyros</h3>
-                <p>Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Served with fries, tomatoes, onions, and Tzatziki.</p>
+                <p>Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Pork Gyros, served with fries, tomatoes, onions, and Tzatziki.</p>
             </div>
             <div class="menu-item">
                 <h3>Chicken Gyros</h3>
-                <p>Tastes like a Greek summer, desired by ancient Spartan warriors. Served with fries, tomatoes, onions, and Tzatziki.</p>
+                <p>Tastes like a Greek summer, desired by ancient Spartan warriors. Will not give you abs, sorry. Chicken Gyros, served with fries, tomatoes, onions, and Tzatziki.</p>
             </div>
             <div class="menu-item">
                 <h3>Pork Souvlaki</h3>
-                <p>Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and divine sauce.</p>
+                <p>Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and our divine sauce – so good even Hera might sneak a bite.</p>
             </div>
             <div class="menu-item">
                 <h3>Chicken Souvlaki</h3>
-                <p>Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and legendary sauce.</p>
+                <p>Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and our legendary sauce – a true hero's handheld feast.</p>
             </div>
             <div class="menu-item">
                 <h3>Kebab Souvlaki</h3>
-                <p>All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and ambrosia-inspired sauce.</p>
+                <p>All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and our secret "ambrosia-inspired" sauce create a Greek miracle in every mouthful...</p>
             </div>
             <div class="menu-item">
                 <h3>Greek Sausage</h3>
-                <p>Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Herbs so good, even Dionysus would raise his goblet in approval.</p>
+                <p>Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Not spicy – passionate. Herbs so good, even Dionysus would raise his goblet in approval.</p>
             </div>
             <div class="menu-item">
                 <h3>Talagani Wrap</h3>
-                <p>Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight.</p>
+                <p>Grilled Talagani (our very own halloumi), peppers, and a drizzle of zesty lemon sauce make this a Mount Olympus-worthy delight. Even Zeus needed balance, and now so do you...</p>
             </div>
         </div>
     </div>
@@ -509,24 +502,36 @@
         <span class="close-overlay" data-close="plattersMenu">&times;</span>
         <div class="menu-header">
             <h2>Greek Me Baby One More Time</h2>
-            <p>Platters fit for Olympus - generous portions for the truly hungry.</p>
+            <p>Because you always come back for more. Don't deny it.</p>
         </div>
         <div class="menu-items">
             <div class="menu-item">
-                <h3>Zeus Platter</h3>
-                <p>A feast worthy of the king of gods - mixed grill with pork, chicken, and sausage, served with rice, salad, and pita bread.</p>
+                <h3>Pork Kalamakia</h3>
+                <p>Tender pork skewers, grilled to perfection and kissed by the flames of Mount Olympus. Even Poseidon would put down his trident for these. Includes 3 juicy pork skewers, served with chips and salad.</p>
             </div>
             <div class="menu-item">
-                <h3>Athena's Veggie Delight</h3>
-                <p>Grilled vegetables, halloumi, feta, and our famous Greek salad. A vegetarian's dream.</p>
+                <h3>Chicken Kalamakia</h3>
+                <p>Succulent chicken skewers, marinated and flame-grilled until golden. So good, even Poseidon would put down his trident for a bite. Includes 3 chicken skewers, served with chips and salad.</p>
             </div>
             <div class="menu-item">
-                <h3>Poseidon's Seafood Platter</h3>
-                <p>Grilled calamari, octopus, and shrimp served with lemon potatoes and Greek salad.</p>
+                <h3>Kebab Portion</h3>
+                <p>Succulent, juicy, and grilled with the fire of Hephaestus himself. One bite and you'll be chanting Opa! 3 juicy kebabs served with fries and salad.</p>
             </div>
             <div class="menu-item">
-                <h3>Apollo's Mixed Grill</h3>
-                <p>Pork souvlaki, chicken gyros, and lamb kebab with all the traditional sides.</p>
+                <h3>Mixed Gyros</h3>
+                <p>The ultimate gyro adventure: a little chicken, a little pork, a lot of deliciousness. Like a Greek tragedy, but everyone lives happily ever after. Served with fries, pittas, bread, and salad.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Sausage Platter</h3>
+                <p>A heroic lineup of sausages, grilled to perfection. Even Zeus would trade lightning bolts for a bite. Served with fries and salad.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Vegetarian Platter</h3>
+                <p>A garden party straight from Mount Olympus. Veggies so good, you'll think Dionysus himself grew them. Talagani, and peppers served with fries and salad.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Mixed Grill Platter</h3>
+                <p>A little bit of everything for the indecisive Greek legend. It's like a symposium, but tastier – feeds 2-3 fully grown Greeks.</p>
             </div>
         </div>
     </div>
@@ -536,28 +541,56 @@
         <span class="close-overlay" data-close="questsMenu">&times;</span>
         <div class="menu-header">
             <h2>The Greek Quests</h2>
-            <p>Traditional Greek main courses - heroic portions for legendary appetites.</p>
+            <p>Not all heroes wear togas. Some just order well.</p>
         </div>
         <div class="menu-items">
             <div class="menu-item">
-                <h3>Moussaka</h3>
-                <p>Layers of eggplant, potatoes, and seasoned minced meat, topped with creamy béchamel sauce.</p>
+                <h3>Bifteki</h3>
+                <p>Juicy Greek-style beef patties filled with herbs and maybe a secret or two from Mount Parnassus. A dish worthy of a Spartan warrior after battle. Potatoes accompany.</p>
             </div>
             <div class="menu-item">
-                <h3>Pastitsio</h3>
-                <p>Greek baked pasta with minced meat and béchamel sauce - comfort food of the gods.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Stifado</h3>
-                <p>Slow-cooked beef stew with pearl onions in a rich tomato and red wine sauce.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Kleftiko</h3>
-                <p>Traditional lamb slow-cooked with herbs, garlic, and lemon - so tender it falls off the bone.</p>
+                <h3>Briam</h3>
+                <p>A vibrant medley of baked vegetables, olive oil, and herbs – the garden of the gods on a plate. Hera herself would claim it as her secret to immortality. Served with fries.</p>
             </div>
             <div class="menu-item">
                 <h3>Gemista</h3>
-                <p>Tomatoes and bell peppers stuffed with herbed rice and baked to perfection.</p>
+                <p>Peppers and tomatoes stuffed with herby rice and good vibes only. So fresh and wholesome, Aphrodite herself might've packed it for a beach picnic.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Giouvesti</h3>
+                <p>Tender chicken baked with orzo, tomato, and a hint of cinnamon. One bite, and you'll feel like you're feasting on Mount Olympus. Comes with fries.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Kleftiko</h3>
+                <p>Lamb so tender it practically sings of Greek islands and olive groves. The secret recipes of Cretan rebels live in every mouthful. Served with roast potatoes.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Lemon Chicken</h3>
+                <p>Tender chicken baked in zesty lemon sauce that could wake Zeus from a nap. Bright, bold, and just the right amount of cheeky – like a Greek holiday fling.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Mousakas</h3>
+                <p>Layers of aubergine, spiced mince, and creamy béchamel baked golden. Like a warm Greek sunset on your plate – Demeter would approve.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Paboutskia</h3>
+                <p>Stuffed aubergines overflowing with spiced mince and sunshine. It's basically the Greek version of comfort food... if comfort wore a toga.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Pastitsio</h3>
+                <p>Pasta, spiced mince, and luscious béchamel in perfect harmony. Even Dionysus would pause the wine for this masterpiece. Even Hercules wouldn't say no.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Plaki Fish</h3>
+                <p>Oven-baked fish with tomatoes, onions, olives, and herbs that sing of the Aegean breeze. Poseidon's favorite – fresh from the sea, fit for a god.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Red Chicken</h3>
+                <p>Tender chicken simmered in a rich tomato sauce kissed by the sun. A dish so comforting, Apollo might trade his lyre for a bite. Fries on the side.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Stifado</h3>
+                <p>Slow-cooked beef with sweet onions and romantic spices, simmered to perfection. A dish worthy of a Spartan warrior after battle. Fries accompany.</p>
             </div>
         </div>
     </div>
@@ -567,24 +600,23 @@
         <span class="close-overlay" data-close="sweetsMenu">&times;</span>
         <div class="menu-header">
             <h2>Sweet Treats</h2>
-            <p>Desserts worthy of the gods - sweet endings to your mythical meal.</p>
         </div>
         <div class="menu-items">
             <div class="menu-item">
-                <h3>Baklava</h3>
-                <p>Layers of crispy filo pastry filled with chopped nuts and sweetened with honey syrup.</p>
+                <h3>Baklavas</h3>
+                <p>Flaky, nutty, sticky perfection. Athena would swap her owl for a piece.</p>
             </div>
             <div class="menu-item">
-                <h3>Galaktoboureko</h3>
-                <p>Creamy semolina custard baked in golden filo pastry and soaked in lemon-scented syrup.</p>
+                <h3>Chocolate Cake</h3>
+                <p>Decadent, rich, and dangerously delicious. Even Hades would sneak a slice.</p>
             </div>
             <div class="menu-item">
-                <h3>Loukoumades</h3>
-                <p>Greek honey puffs - light, airy doughnuts drizzled with honey and sprinkled with cinnamon.</p>
+                <h3>Orange Cake</h3>
+                <p>Zesty, sweet and sun-kissed. Helios himself might approve.</p>
             </div>
             <div class="menu-item">
-                <h3>Greek Yogurt with Honey and Walnuts</h3>
-                <p>Authentic Greek yogurt topped with golden honey and crunchy walnuts.</p>
+                <h3>Ravani</h3>
+                <p>Greek semolina cake drenched in syrup. A sweet hug from the Mediterranean.</p>
             </div>
         </div>
     </div>
@@ -697,5 +729,7 @@
             }
         });
     </script>
+</body>
+</html>
 </body>
 </html>
