@@ -73,6 +73,7 @@
             font-size: 1.1em;
             transition: var(--transition);
             position: relative;
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -100,6 +101,8 @@
         .main-actions {
             text-align: center;
             padding: 60px 0 40px;
+            position: relative;
+            z-index: 100;
         }
 
         .action-button {
@@ -116,6 +119,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 2px solid transparent;
+            cursor: pointer;
         }
 
         .action-button:hover {
@@ -222,7 +226,7 @@
         .menu-header {
             text-align: center;
             margin-bottom: 40px;
-        padding-bottom: 20px;
+            padding-bottom: 20px;
             border-bottom: 3px solid var(--primary);
         }
 
@@ -306,6 +310,8 @@
             .action-button {
                 padding: 18px 35px;
                 font-size: 1.2em;
+            position: relative;
+                z-index: 100;
             }
 
             .category-grid {
@@ -494,6 +500,56 @@
             <div class="menu-item">
                 <h3>Talagani Wrap</h3>
                 <p>Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT MENÜ -->
+    <div id="aboutMenu" class="menu-overlay">
+        <span class="close-overlay" data-close="aboutMenu">&times;</span>
+        <div class="menu-header">
+            <h2>About Helen's Greek Kitchen</h2>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <h3>Our Story</h3>
+                <p>Helen's Greek Kitchen brings authentic Greek flavors to your table, crafted with love and traditional recipes passed down through generations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALLERGENS MENÜ -->
+    <div id="allergensMenu" class="menu-overlay">
+        <span class="close-overlay" data-close="allergensMenu">&times;</span>
+        <div class="menu-header">
+            <h2>Allergen Information</h2>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <h3>Common Allergens</h3>
+                <p>Our dishes may contain common allergens including dairy, gluten, nuts, and shellfish. Please inform our staff about any allergies before ordering.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT MENÜ -->
+    <div id="contactMenu" class="menu-overlay">
+        <span class="close-overlay" data-close="contactMenu">&times;</span>
+        <div class="menu-header">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="menu-items">
+            <div class="menu-item">
+                <h3>Location</h3>
+                <p>The Three Cups Pub<br>123 Main Street<br>Your City</p>
+            </div>
+            <div class="menu-item">
+                <h3>Opening Hours</h3>
+                <p>Monday-Saturday: 11am-10pm<br>Sunday: 12pm-9pm</p>
+            </div>
+            <div class="menu-item">
+                <h3>Phone</h3>
+                <p>+1 234 567 890</p>
             </div>
         </div>
     </div>
