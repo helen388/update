@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helen's Greek Kitchen - Authentic Greek Food</title>
+    <title>Helen's Greek Kitchen - Fotógaléria</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -255,6 +255,8 @@
             border-radius: 12px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            cursor: pointer;
+            position: relative;
         }
 
         .menu-item:hover {
@@ -272,6 +274,74 @@
             color: var(--text-light);
             font-size: 1.05em;
             line-height: 1.5;
+        }
+
+        /* Fotógaléria overlay */
+        .gallery-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 3000;
+            padding: 80px 20px 50px;
+            overflow-y: auto;
+        }
+
+        .gallery-overlay.active {
+            display: block;
+        }
+
+        .gallery-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .gallery-image {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .gallery-title {
+            color: var(--white);
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .gallery-description {
+            color: var(--text-light);
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-nav-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         /* Lábléc */
@@ -406,43 +476,43 @@
             <p>Before the main feast, the gods liked to snack too. Sharing is optional. Greed is divine.</p>
         </div>
         <div class="menu-items">
-            <div class="menu-item">
+            <div class="menu-item" data-item="Allitis Pitta">
                 <h3>Allitis Pitta</h3>
                 <p>A homemade Classic from our own Greek Legend Helen. Beef Mince Meat on a pitta bread, served with a little salad and Authentic Greek Yogurt.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Feta Pastry with Honey">
                 <h3>Feta Pastry with Honey</h3>
                 <p>Crispy, Salty, Sweet and scandalously addictive. Proof the Gods liked a dessert before dinner. PDO Feta cheese wrapped in filo pastry and drizzled with honey and sesame.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Kolokithokeftedes">
                 <h3>Kolokithokeftedes</h3>
                 <p>Crispy Courgettes fritters bursting with herb and Feta – Zeus himself declared them "dangerously moreish".</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Greek Salad">
                 <h3>Greek Salad</h3>
                 <p>Fresh, Crunchy and very Athenian-approved. Even Plato would pause his philosophy for this. Authentic Greek Salad, fresh tomatoes, cucumber, bell pepper, onions, olives, extra virgin olive-oil and oregano.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Dolmades">
                 <h3>Dolmades</h3>
                 <p>Tender vine leaves, stuffed with rice and herbs, basically Greek Sushi but with more Salt. Served with a fresh lemon sauce.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Talagani Cheese">
                 <h3>Talagani Cheese</h3>
                 <p>Grilled to golden perfection, crispy outside heavenly inside. Even Apollo could not resist this melody of flavour.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Tzatziki">
                 <h3>Tzatziki</h3>
                 <p>Cool Authentic Greek Yogurt, cucumber & garlic – Combo of destiny. The shield that protects all gyros.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Aubergine Dip">
                 <h3>Aubergine Dip</h3>
                 <p>Smokey, silky and deeply mysterious. If the Oracle of Delphi made Sushi, this would be it!</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Houmous">
                 <h3>Houmous</h3>
                 <p>Smooth, Garlicky and made with love (and Chickpeas.) The dip of diplomacy – unites all tables. Served with Extra Virgin Olive Oil and paprika.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Olives">
                 <h3>Olives</h3>
                 <p>Simple. Classic. Eternal. Athena's proudest invention. Respect the Olive!</p>
             </div>
@@ -456,207 +526,47 @@
             <h2>Wraps for the Gods</h2>
         </div>
         <div class="menu-items">
-            <div class="menu-item">
+            <div class="menu-item" data-item="Pork Gyros">
                 <h3>Pork Gyros</h3>
                 <p>Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Served with fries, tomatoes, onions, and Tzatziki.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Chicken Gyros">
                 <h3>Chicken Gyros</h3>
                 <p>Tastes like a Greek summer, desired by ancient Spartan warriors. Served with fries, tomatoes, onions, and Tzatziki.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Pork Souvlaki">
                 <h3>Pork Souvlaki</h3>
                 <p>Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and divine sauce.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Chicken Souvlaki">
                 <h3>Chicken Souvlaki</h3>
                 <p>Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and legendary sauce.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Kebab Souvlaki">
                 <h3>Kebab Souvlaki</h3>
                 <p>All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and ambrosia-inspired sauce.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Greek Sausage">
                 <h3>Greek Sausage</h3>
                 <p>Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Herbs so good, even Dionysus would raise his goblet in approval.</p>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-item="Talagani Wrap">
                 <h3>Talagani Wrap</h3>
                 <p>Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight.</p>
             </div>
         </div>
     </div>
 
-    <!-- PLATTERS MENÜ -->
-    <div id="plattersMenu" class="menu-overlay">
-        <span class="close-overlay" data-close="plattersMenu">&times;</span>
-        <div class="menu-header">
-            <h2>Greek Me Baby One More Time</h2>
-            <p>Because you always come back for more. Don't deny it.</p>
-        </div>
-        <div class="menu-items">
-            <div class="menu-item">
-                <h3>Pork Kalamakia</h3>
-                <p>Tender pork skewers, grilled to perfection and kissed by the flames of Mount Olympus. Even Poseidon would put down his trident for these. Includes 3 juicy pork skewers, served with chips and salad.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Chicken Kalamakia</h3>
-                <p>Succulent chicken skewers, marinated and flame-grilled until golden. So good, even Poseidon would put down his trident for a bite. Includes 3 chicken skewers, served with chips and salad.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Kebab Portion</h3>
-                <p>Succulent, juicy, and grilled with the fire of Hephaestus himself. One bite and you'll be chanting Opa! 3 juicy kebabs served with fries and salad.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Mixed Gyros</h3>
-                <p>The ultimate gyro adventure: a little chicken, a little pork, a lot of deliciousness. Like a Greek tragedy, but everyone lives happily ever after. Served with fries, pittas, bread, and salad.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Sausage Platter</h3>
-                <p>A heroic lineup of sausages, grilled to perfection. Even Zeus would trade lightning bolts for a bite. Served with fries and salad.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Vegetarian Platter</h3>
-                <p>A garden party straight from Mount Olympus. Veggies so good, you'll think Dionysus himself grew them. Talagani, and peppers served with fries and salad.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Mixed Grill Platter</h3>
-                <p>A little bit of everything for the indecisive Greek legend. It's like a symposium, but tastier – feeds 2-3 fully grown Greeks.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- QUESTS MENÜ -->
-    <div id="questsMenu" class="menu-overlay">
-        <span class="close-overlay" data-close="questsMenu">&times;</span>
-        <div class="menu-header">
-            <h2>The Greek Quests</h2>
-            <p>Not all heroes wear togas. Some just order well.</p>
-        </div>
-        <div class="menu-items">
-            <div class="menu-item">
-                <h3>Bifteki</h3>
-                <p>Juicy Greek-style beef patties filled with herbs and maybe a secret or two from Mount Parnassus. A dish worthy of a Spartan warrior after battle. Potatoes accompany.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Briam</h3>
-                <p>A vibrant medley of baked vegetables, olive oil, and herbs – the garden of the gods on a plate. Hera herself would claim it as her secret to immortality. Served with fries.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Gemista</h3>
-                <p>Peppers and tomatoes stuffed with herby rice and good vibes only. So fresh and wholesome, Aphrodite herself might've packed it for a beach picnic.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Giouvesti</h3>
-                <p>Tender chicken baked with orzo, tomato, and a hint of cinnamon. One bite, and you'll feel like you're feasting on Mount Olympus. Comes with fries.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Kleftiko</h3>
-                <p>Lamb so tender it practically sings of Greek islands and olive groves. The secret recipes of Cretan rebels live in every mouthful. Served with roast potatoes.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Lemon Chicken</h3>
-                <p>Tender chicken baked in zesty lemon sauce that could wake Zeus from a nap. Bright, bold, and just the right amount of cheeky – like a Greek holiday fling.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Mousakas</h3>
-                <p>Layers of aubergine, spiced mince, and creamy béchamel baked golden. Like a warm Greek sunset on your plate – Demeter would approve.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Paboutskia</h3>
-                <p>Stuffed aubergines overflowing with spiced mince and sunshine. It's basically the Greek version of comfort food... if comfort wore a toga.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Pastitsio</h3>
-                <p>Pasta, spiced mince, and luscious béchamel in perfect harmony. Even Dionysus would pause the wine for this masterpiece. Even Hercules wouldn't say no.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Plaki Fish</h3>
-                <p>Oven-baked fish with tomatoes, onions, olives, and herbs that sing of the Aegean breeze. Poseidon's favorite – fresh from the sea, fit for a god.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Red Chicken</h3>
-                <p>Tender chicken simmered in a rich tomato sauce kissed by the sun. A dish so comforting, Apollo might trade his lyre for a bite. Fries on the side.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Stifado</h3>
-                <p>Slow-cooked beef with sweet onions and romantic spices, simmered to perfection. A dish worthy of a Spartan warrior after battle. Fries accompany.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SWEETS MENÜ -->
-    <div id="sweetsMenu" class="menu-overlay">
-        <span class="close-overlay" data-close="sweetsMenu">&times;</span>
-        <div class="menu-header">
-            <h2>Sweet Treats</h2>
-        </div>
-        <div class="menu-items">
-            <div class="menu-item">
-                <h3>Baklavas</h3>
-                <p>Flaky, nutty, sticky perfection. Athena would swap her owl for a piece.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Chocolate Cake</h3>
-                <p>Decadent, rich, and dangerously delicious. Even Hades would sneak a slice.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Orange Cake</h3>
-                <p>Zesty, sweet and sun-kissed. Helios himself might approve.</p>
-            </div>
-            <div class="menu-item">
-                <h3>Ravani</h3>
-                <p>Greek semolina cake drenched in syrup. A sweet hug from the Mediterranean.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ABOUT MENÜ -->
-    <div id="aboutMenu" class="menu-overlay">
-        <span class="close-overlay" data-close="aboutMenu">&times;</span>
-        <div class="menu-header">
-            <h2>About Helen's Greek Kitchen</h2>
-        </div>
-        <div class="menu-items">
-            <div class="menu-item">
-                <h3>Our Story</h3>
-                <p>Helen's Greek Kitchen brings authentic Greek flavors to your table, crafted with love and traditional recipes passed down through generations.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ALLERGENS MENÜ -->
-    <div id="allergensMenu" class="menu-overlay">
-        <span class="close-overlay" data-close="allergensMenu">&times;</span>
-        <div class="menu-header">
-            <h2>Allergen Information</h2>
-        </div>
-        <div class="menu-items">
-            <div class="menu-item">
-                <h3>Common Allergens</h3>
-                <p>Our dishes may contain common allergens including dairy, gluten, nuts, and shellfish. Please inform our staff about any allergies before ordering.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT MENÜ -->
-    <div id="contactMenu" class="menu-overlay">
-        <span class="close-overlay" data-close="contactMenu">&times;</span>
-        <div class="menu-header">
-            <h2>Contact Us</h2>
-        </div>
-        <div class="menu-items">
-            <div class="menu-item">
-                <h3>Location</h3>
-                <p>The Three Cups Pub<br>123 Main Street<br>Your City</p>
-            </div>
-            <div class="menu-item">
-                <h3>Opening Hours</h3>
-                <p>Monday-Saturday: 11am-10pm<br>Sunday: 12pm-9pm</p>
-            </div>
-            <div class="menu-item">
-                <h3>Phone</h3>
-                <p>+1 234 567 890</p>
+    <!-- Fotógaléria overlay -->
+    <div id="galleryOverlay" class="gallery-overlay">
+        <span class="close-overlay" data-close="galleryOverlay">&times;</span>
+        <div class="gallery-container">
+            <h2 class="gallery-title" id="galleryTitle">Étel neve</h2>
+            <img id="galleryImage" class="gallery-image" src="" alt="Étel fotója">
+            <p class="gallery-description" id="galleryDescription">Étel leírása</p>
+            <div class="gallery-nav">
+                <button class="gallery-nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i> Előző</button>
+                <button class="gallery-nav-btn" id="nextBtn">Következő <i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
@@ -669,6 +579,65 @@
     </footer>
 
     <script>
+        // Étel adatok - itt tároljuk az ételek leírását
+        const foodData = {
+            "Allitis Pitta": {
+                description: "A homemade Classic from our own Greek Legend Helen. Beef Mince Meat on a pitta bread, served with a little salad and Authentic Greek Yogurt."
+            },
+            "Feta Pastry with Honey": {
+                description: "Crispy, Salty, Sweet and scandalously addictive. Proof the Gods liked a dessert before dinner. PDO Feta cheese wrapped in filo pastry and drizzled with honey and sesame."
+            },
+            "Kolokithokeftedes": {
+                description: "Crispy Courgettes fritters bursting with herb and Feta – Zeus himself declared them 'dangerously moreish'."
+            },
+            "Greek Salad": {
+                description: "Fresh, Crunchy and very Athenian-approved. Even Plato would pause his philosophy for this. Authentic Greek Salad, fresh tomatoes, cucumber, bell pepper, onions, olives, extra virgin olive-oil and oregano."
+            },
+            "Dolmades": {
+                description: "Tender vine leaves, stuffed with rice and herbs, basically Greek Sushi but with more Salt. Served with a fresh lemon sauce."
+            },
+            "Talagani Cheese": {
+                description: "Grilled to golden perfection, crispy outside heavenly inside. Even Apollo could not resist this melody of flavour."
+            },
+            "Tzatziki": {
+                description: "Cool Authentic Greek Yogurt, cucumber & garlic – Combo of destiny. The shield that protects all gyros."
+            },
+            "Aubergine Dip": {
+                description: "Smokey, silky and deeply mysterious. If the Oracle of Delphi made Sushi, this would be it!"
+            },
+            "Houmous": {
+                description: "Smooth, Garlicky and made with love (and Chickpeas.) The dip of diplomacy – unites all tables. Served with Extra Virgin Olive Oil and paprika."
+            },
+            "Olives": {
+                description: "Simple. Classic. Eternal. Athena's proudest invention. Respect the Olive!"
+            },
+            "Pork Gyros": {
+                description: "Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Served with fries, tomatoes, onions, and Tzatziki."
+            },
+            "Chicken Gyros": {
+                description: "Tastes like a Greek summer, desired by ancient Spartan warriors. Served with fries, tomatoes, onions, and Tzatziki."
+            },
+            "Pork Souvlaki": {
+                description: "Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and divine sauce."
+            },
+            "Chicken Souvlaki": {
+                description: "Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and legendary sauce."
+            },
+            "Kebab Souvlaki": {
+                description: "All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and ambrosia-inspired sauce."
+            },
+            "Greek Sausage": {
+                description: "Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Herbs so good, even Dionysus would raise his goblet in approval."
+            },
+            "Talagani Wrap": {
+                description: "Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight."
+            }
+        };
+
+        // Globális változók a galéria navigációhoz
+        let currentFoodItems = [];
+        let currentIndex = 0;
+
         // Kategória választó megjelenítése
         document.getElementById('showMenu').addEventListener('click', function(e) {
             e.preventDefault();
@@ -718,6 +687,83 @@
                 });
             }
         });
+
+        // Ételre kattintás - fotógaléria megjelenítése
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const foodName = this.getAttribute('data-item');
+                const category = this.closest('.menu-overlay').id.replace('Menu', '');
+                
+                // Összegyűjtjük az aktuális kategória összes ételét
+                currentFoodItems = [];
+                const menuItems = this.closest('.menu-items').querySelectorAll('.menu-item');
+                menuItems.forEach((menuItem, index) => {
+                    if (menuItem === this) {
+                        currentIndex = index;
+                    }
+                    currentFoodItems.push({
+                        name: menuItem.getAttribute('data-item'),
+                        description: menuItem.querySelector('p').textContent
+                    });
+                });
+
+                // Betöltjük az aktuális étel adatait
+                loadFoodImage(foodName, currentIndex);
+            });
+        });
+
+        // Fotó betöltése a galériába
+        function loadFoodImage(foodName, index) {
+            // Az étel nevéből generáljuk a képfájl nevét
+            const imageName = foodName.toLowerCase().replace(/ /g, '_') + '.jpg';
+            const imageUrl = `food_images/${imageName}`;
+
+            document.getElementById('galleryTitle').textContent = foodName;
+            document.getElementById('galleryDescription').textContent = currentFoodItems[index].description;
+            document.getElementById('galleryImage').src = imageUrl;
+            document.getElementById('galleryOverlay').classList.add('active');
+
+            // Navigációs gombok állapotának beállítása
+            updateNavButtons();
+        }
+
+        // Előző étel
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadFoodImage(currentFoodItems[currentIndex].name, currentIndex);
+            }
+        });
+
+        // Következő étel
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentIndex < currentFoodItems.length - 1) {
+                currentIndex++;
+                loadFoodImage(currentFoodItems[currentIndex].name, currentIndex);
+            }
+        });
+
+        // Navigációs gombok frissítése
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            if (currentIndex === 0) {
+                prevBtn.disabled = true;
+                prevBtn.style.opacity = '0.5';
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.style.opacity = '1';
+            }
+
+            if (currentIndex === currentFoodItems.length - 1) {
+                nextBtn.disabled = true;
+                nextBtn.style.opacity = '0.5';
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '1';
+            }
+        }
     </script>
 </body>
 </html>
