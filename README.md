@@ -722,23 +722,40 @@
                 });
 
                 // Load current food data
-                loadFoodImage(foodName, currentIndex);
-            });
-        });
+               function loadFoodImage(foodName, index) {
+    const baseName = foodName.toLowerCase().replace(/ /g, '_');
+    const extensions = ['.jpg', '.png', '.jpeg', '.jpg.png'];
 
-        // Load photo into gallery
-        function loadFoodImage(foodName, index) {
-            // Generate image file name from food name
-            const imageName = foodName.toLowerCase().replace(/ /g, '_') + '.jpg';
-            const imageUrl = imageName;  // Images in main folder
+    let imageFound = false;
+    let imageUrl = '';
 
-            document.getElementById('galleryTitle').textContent = foodName;
-            document.getElementById('galleryDescription').textContent = currentFoodItems[index].description;
-            document.getElementById('galleryImage').src = imageUrl;
-            document.getElementById('galleryOverlay').classList.add('active');
+    for (let ext of extensions) {
+        const testUrl = baseName + ext;
+        // Ellenőrizzük, hogy a kép létezik-e
+        const xhr = new XMLHttpRequest();
+        xhr.open('HEAD', testUrl, false);  // szinkron kérés
+        xhr.send();
+        if (xhr.status !== 404) {
+            imageUrl = testUrl;
+            imageFound = true;
+            break;
+        }
+    }
 
-            // Update navigation buttons state
-            updateNavButtons();
+    // Ha egyáltalán nincs kép, legyen egy helyettesítő
+    if (!imageFound) {
+        imageUrl = 'placeholder.png'; // ide tehetsz egy "not found" képet
+    }
+
+    // Betöltés a galériába
+    document.getElementById('galleryTitle').textContent = foodName;
+    document.getElementById('galleryDescription').textContent = currentFoodItems[index].description;
+    document.getElementById('galleryImage').src = imageUrl;
+    document.getElementById('galleryOverlay').classList.add('active');
+
+    // Navigáció gombok frissítése
+    updateNavButtons();
+}
         }
 
         // Previous food
