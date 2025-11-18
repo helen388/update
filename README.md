@@ -648,88 +648,6 @@
     </footer>
 
     <script>
-        // Food data - storing food descriptions
-        const foodData = {
-            "Allitis Pitta": {
-                description: "A homemade Classic from our own Greek Legend Helen. Beef Mince Meat on a pitta bread, served with a little salad and Authentic Greek Yogurt."
-            },
-            "Feta Pastry with Honey": {
-                description: "Crispy, Salty, Sweet and scandalously addictive. Proof the Gods liked a dessert before dinner. PDO Feta cheese wrapped in filo pastry and drizzled with honey and sesame."
-            },
-            "Kolokithokeftedes": {
-                description: "Crispy Courgettes fritters bursting with herb and Feta – Zeus himself declared them 'dangerously moreish'."
-            },
-            "Greek Salad": {
-                description: "Fresh, Crunchy and very Athenian-approved. Even Plato would pause his philosophy for this. Authentic Greek Salad, fresh tomatoes, cucumber, bell pepper, onions, olives, extra virgin olive-oil and oregano."
-            },
-            "Dolmades": {
-                description: "Tender vine leaves, stuffed with rice and herbs, basically Greek Sushi but with more Salt. Served with a fresh lemon sauce."
-            },
-            "Talagani Cheese": {
-                description: "Grilled to golden perfection, crispy outside heavenly inside. Even Apollo could not resist this melody of flavour."
-            },
-            "Tzatziki": {
-                description: "Cool Authentic Greek Yogurt, cucumber & garlic – Combo of destiny. The shield that protects all gyros."
-            },
-            "Aubergine Dip": {
-                description: "Smokey, silky and deeply mysterious. If the Oracle of Delphi made Sushi, this would be it!"
-            },
-            "Houmous": {
-                description: "Smooth, Garlicky and made with love (and Chickpeas.) The dip of diplomacy – unites all tables. Served with Extra Virgin Olive Oil and paprika."
-            },
-            "Olives": {
-                description: "Simple. Classic. Eternal. Athena's proudest invention. Respect the Olive!"
-            },
-            "Pork Gyros": {
-                description: "Juicy, smoky, and 100% approved by the intellectual Athenians. Yes, Socrates would've ordered two. Served with fries, tomatoes, onions, and Tzatziki."
-            },
-            "Chicken Gyros": {
-                description: "Tastes like a Greek summer, desired by ancient Spartan warriors. Served with fries, tomatoes, onions, and Tzatziki."
-            },
-            "Pork Souvlaki": {
-                description: "Tender pork, kissed by fire and Greek spices, wrapped in fluffy pita glory. Served with fries, salad, and divine sauce."
-            },
-            "Chicken Souvlaki": {
-                description: "Succulent chicken, marinated like a Spartan's secret weapon, grilled to perfection. Wrapped with salad, fries, and legendary sauce."
-            },
-            "Kebab Souvlaki": {
-                description: "All the juicy, grilled goodness of our kebab, wrapped tighter than Athena's helmet. Sweet red peppers and ambrosia-inspired sauce."
-            },
-            "Greek Sausage": {
-                description: "Bold, flavorful, and full of street-smart swagger straight from the Greek agora. Herbs so good, even Dionysus would raise his goblet in approval."
-            },
-            "Talagani Wrap": {
-                description: "Grilled Talagani, peppers, and a drizzle of zesty lemon sauce. Mount Olympus-worthy delight."
-            },
-            "Pork Gyros Platter": {
-                description: "Feast like a true Olympian with our legendary pork gyros served with fries, salad, pita bread, and Tzatziki."
-            },
-            "Chicken Gyros Platter": {
-                description: "A heroic portion of our famous chicken gyros, accompanied by fries, fresh salad, warm pita, and authentic Tzatziki."
-            },
-            "Mixed Gyros Platter": {
-                description: "Can't decide? Have it all! Both pork and chicken gyros with all the trimmings."
-            },
-            "Moussaka": {
-                description: "Layers of eggplant, minced meat, and creamy béchamel sauce - a Greek classic!"
-            },
-            "Pastitsio": {
-                description: "Greek baked pasta with minced meat and béchamel sauce."
-            },
-            "Stifado": {
-                description: "Traditional Greek beef stew with pearl onions in rich tomato sauce."
-            },
-            "Baklava": {
-                description: "Layers of crispy filo pastry, nuts and honey syrup."
-            },
-            "Galaktoboureko": {
-                description: "Creamy custard baked in filo pastry with sweet syrup."
-            },
-            "Loukoumades": {
-                description: "Golden honey puffs drizzled with cinnamon and walnuts."
-            }
-        };
-
         // Global variables for gallery navigation
         let currentFoodItems = [];
         let currentIndex = 0;
@@ -759,12 +677,12 @@
 
         // Click outside overlay to close
         document.querySelectorAll('.category-selector, .menu-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('active');
-                }
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
             });
-        });
 
         // Navigation links
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -812,7 +730,7 @@
         function loadFoodImage(foodName, index) {
             // Generate image file name from food name
             const imageName = foodName.toLowerCase().replace(/ /g, '_') + '.jpg';
-            const imageUrl = `${imageName}`;  // Images in main folder
+            const imageUrl = imageName;  // Images in main folder
 
             document.getElementById('galleryTitle').textContent = foodName;
             document.getElementById('galleryDescription').textContent = currentFoodItems[index].description;
@@ -833,11 +751,11 @@
 
         // Next food
         document.getElementById('nextBtn').addEventListener('click', function() {
-            if (currentIndex < currentFoodItems.length - 1) {
-                currentIndex++;
-                loadFoodImage(currentFoodItems[currentIndex].name, currentIndex);
-            }
-        });
+                if (currentIndex < currentFoodItems.length - 1) {
+                    currentIndex++;
+                    loadFoodImage(currentFoodItems[currentIndex].name, currentIndex);
+                }
+            });
 
         // Update navigation buttons
         function updateNavButtons() {
